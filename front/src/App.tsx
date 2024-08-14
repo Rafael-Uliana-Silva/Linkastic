@@ -1,10 +1,12 @@
 import './Style.css';
+import Login from './components/login/Login';
 
 function App() {
-  return 
+  return (
     <div>
-
-    </div>;
+      <Login />
+    </div>
+  )
 }
 
 export default App;
