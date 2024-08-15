@@ -1,15 +1,15 @@
 import React from 'react'
+import { LoginContainer, LoginForm, IconLogo } from './LoginStyle'
 
 const Login = () => {
-//  const [nome, setNome] = React.useState("");
-//  const [pass, setPass] = React.useState("");
 
   return (
-    <div>
-      <div>
+    <LoginContainer>
+      <div className='logo'>
+        <IconLogo />
         <h1>Linkastic</h1>
       </div>
-      <div>
+      <LoginForm>
         <h1>Login</h1>
         <h2>Logue na sua conta usando suas informações cadastradas</h2>
         <form action="#">
@@ -17,14 +17,14 @@ const Login = () => {
           <input type="text" id='nome'/>
           <label htmlFor="senha">Senha de acesso</label>
           <input type="password" id='senha'/>
-          <p>Esqueceu a senha? Clique aqui</p>
+          <p className='esqueceu'>Esqueceu a senha? <span>Clique aqui</span></p>
         </form>
         <div className='btn'>
           <p>Entrar</p>
         </div>
-        <p>Não tem uma conta?<span>Crie uma aqui</span></p>
-      </div>
-    </div>
+        <p className='criarConta'>Não tem uma conta?<span>Crie uma aqui</span></p>
+      </LoginForm>
+    </LoginContainer>
   )
 }
 

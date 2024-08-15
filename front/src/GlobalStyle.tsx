@@ -201,6 +201,26 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  input {
+    border: 1px solid #8A8A8A;
+    border-radius: 30px;
+    outline: none;
+    padding: 5px 0px;
+    padding-left: 5px;
+    margin-top: 5px;
+  }
+
+  .btn {
+    width: 100%;
+    background: #83C687;
+    border-radius: 30px;
+    padding: 10px 0px;
+    margin: 30px 0px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+  }
+
   h1 {
     font-size: 2rem;
   }
