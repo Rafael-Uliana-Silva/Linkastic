@@ -1,10 +1,11 @@
-import './Style.css';
+import GlobalStyle from './GlobalStyle';
 import Login from './components/login/Login';
 
 function App() {
   return (
     <div>
-      <Login />
+      <GlobalStyle />
+        <Login />
     </div>
   )
 }

@@ -15,6 +15,9 @@ mongoose.connect(process.env.MONGODB_URI || '')
 app.use(express.json());
 app.use(cors());
 
+import userRoute from "./routes/userRoute"
+app.use("/users", userRoute);
+
 app.listen(PORT, () => {
   console.log(`Server iniciado na url: http://localhost:${PORT}`);
 });
