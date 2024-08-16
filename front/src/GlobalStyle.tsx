@@ -196,7 +196,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Estilos gerais */
 
-  h1, h2, h3, p, input, textarea, label {
+  h1, h2, h3, p, input, textarea, label, li, a, button {
     font-family: Inter;
     font-weight: 400;
   }
