@@ -19,9 +19,12 @@ const Register = () => {
       localStorage.setItem('token', response.data.token);
       
       navigate('/profile');
-    } catch (err) {
-      console.log(err)
-      setError('Erro ao registrar. Tente novamente.');
+    } catch (error: any) {
+      if (error.response && error.response.data) {
+        setError(error.response.data.message);
+      } else {
+        setError("Erro no servidor. Tente novamente");
+      }
     }
   };
 
@@ -34,7 +37,7 @@ const Register = () => {
     <LoginForm>
       <h1>Registro</h1>
       <h2>Faça seu registro em nossos serviços</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className='error'>{error}</p>}
       <form onSubmit={handleRegister}>
         <label htmlFor="nome">Nome de usúario</label>
         <input 
@@ -42,13 +45,15 @@ const Register = () => {
           id='nome'
           value={username}
           onChange={(event) => setUsername(event.target.value)}
+          required
           />
         <label htmlFor="email">Endereço de Email</label>
         <input 
-          type="text" 
+          type="email" 
           id='email'
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          required
           />
         <label htmlFor="senha">Senha de acesso</label>
         <input 
@@ -56,6 +61,7 @@ const Register = () => {
           id='senha'
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+          required
         />
         <p className='esqueceu'>Esqueceu a senha? <span>Clique aqui</span></p>
         <button className='btn' type='submit'>

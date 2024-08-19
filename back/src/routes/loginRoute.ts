@@ -6,9 +6,9 @@ import User from "../models/user";
 const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
-    const { username, password } = req.body;
+    const { credential, password } = req.body;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ $or: [{username: credential }, {email: credential}] });
 
     if (!user) {
         return res.status(401).json({ message: 'Credenciais inválidas' });

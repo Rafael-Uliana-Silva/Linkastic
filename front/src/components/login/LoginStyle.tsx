@@ -19,6 +19,11 @@ const LoginForm = styled.div`
   border-radius: 30px;
   padding: 30px;
   text-align: left;
+  .error {
+    color: red;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
   h2 {
     margin-top: 15px;
     margin-bottom: 70px;

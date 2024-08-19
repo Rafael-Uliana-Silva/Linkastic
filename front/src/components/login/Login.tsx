@@ -4,7 +4,7 @@ import { LoginContainer, LoginForm, IconLogo } from './LoginStyle'
 import { useNavigate, NavLink } from 'react-router-dom';
 
 const Login = () => {
-  const [username, setUsername] = React.useState("");
+  const [credential, setCredential] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/login", {username, password});
+      const response = await axios.post("http://localhost:3001/login", {credential, password});
       localStorage.setItem("token", response.data.token);
       navigate("/profile");
     } catch (err) {
@@ -31,14 +31,14 @@ const Login = () => {
       <LoginForm>
         <h1>Login</h1>
         <h2>Logue na sua conta usando suas informações cadastradas</h2>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="error" >{error}</p>}
         <form onSubmit={handleLogin}>
           <label htmlFor="nome">Endereço de Email ou nome de usúario</label>
           <input 
             type="text" 
             id='nome'
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={credential}
+            onChange={(event) => setCredential(event.target.value)}
             />
           <label htmlFor="senha">Senha de acesso</label>
           <input 
