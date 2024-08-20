@@ -232,6 +232,10 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: 1rem;
   }
+
+  span {
+    display: flex;
+  }
 `
 
 export default GlobalStyle
