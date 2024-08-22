@@ -1,5 +1,6 @@
 import GlobalStyle from './GlobalStyle';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { UserProvider } from "../Context/UserContext";
 import Login from './components/login/Login';
 import Register from './components/login/Register';
 import ProfileMain from './components/profile/ProfileMain'
@@ -9,24 +10,23 @@ function App() {
   return (
     <div>
       <GlobalStyle />
-      <BrowserRouter>
-        <Routes>
-          <Route 
-            path='/'
-            element={<Login />}
-          />
-          <Route 
-            path='/register'
-            element={<Register />}
-          />
-          <Route element={<PrivateRoute />}>
+      <UserProvider>
+        <BrowserRouter>
+          <Routes>
             <Route 
-              path='/profile'
-              element={<ProfileMain />}
+              path='/'
+              element={<Login />}
             />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route 
+              path='/register'
+              element={<Register />}
+            />
+            <Route element={<PrivateRoute />}>
+              <Route path='/profile/:id' element={<ProfileMain />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </div>
   )
 }

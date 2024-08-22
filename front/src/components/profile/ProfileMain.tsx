@@ -1,9 +1,27 @@
-import React from 'react'
-import { Header, Footer, ProfileContainer, ProfileCard, HeaderList, IconGear, LinkList} from "./ProfileStyle"
-import { IconLogo, IconLink, IconOlho, IconPerfil, IconSeta } from './ProfileIcons'
-import Exemplo from "../../assets/ed.jpg"
+import React from 'react';
+import { Header, Footer, ProfileContainer, ProfileCard, HeaderList, IconGear, LinkList } from "./ProfileStyle";
+import { IconLogo, IconLink, IconOlho, IconPerfil, IconSeta } from './ProfileIcons';
+import { useParams } from 'react-router-dom';
+import { UserContext } from "../../../Context/UserContext";
 
-const profileMain = () => {
+const ProfileMain = () => {
+  const { id } = useParams();
+  const context = React.useContext(UserContext);
+  if (!context) {
+    throw new Error('UserContext must be used within a UserProvider');
+  }
+  const { fetchUserData, userData } = context;
+
+  React.useEffect(() => {
+    if (id) {
+      fetchUserData(id);
+    }
+  }, [id, fetchUserData]);
+
+  if (!userData) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
       <ProfileContainer>
@@ -16,14 +34,16 @@ const profileMain = () => {
           </HeaderList>
           <IconGear />
         </Header>
-        <ProfileCard >
-          <img src={Exemplo}/>
-          <h1>Usuário</h1>
-          <p>Email@email.com</p>
+        <ProfileCard>
+          <img src={userData.img || 'default-img.png'} alt="Profile" />
+          <h1>{userData.username}</h1>
+          <p>{userData.email}</p>
           <LinkList>
-            <li><span><IconLink /> Link 1</span><span><IconSeta /></span></li>
-            <li><span><IconLink /> Link 2</span><span><IconSeta /></span></li>
-            <li><span><IconLink /> Link 3</span><span><IconSeta /></span></li>
+            {userData.links.map((link, index) => (
+              <li key={index}>
+                <span><IconLink /> {link.title}</span><span><IconSeta /></span>
+              </li>
+            ))}
           </LinkList>
         </ProfileCard>
       </ProfileContainer>
@@ -31,7 +51,7 @@ const profileMain = () => {
         <p>Linkastic © 2024</p>
       </Footer>
     </div>
-  )
-}
+  );
+};
 
-export default profileMain
+export default ProfileMain;
