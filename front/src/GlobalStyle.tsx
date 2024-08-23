@@ -212,6 +212,7 @@ const GlobalStyle = createGlobalStyle`
 
   .btn {
     width: 100%;
+    border: 2px solid #000;
     background: #83C687;
     border-radius: 30px;
     padding: 10px 0px;
@@ -219,6 +220,15 @@ const GlobalStyle = createGlobalStyle`
     color: #fff;
     cursor: pointer;
     text-align: center;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #54A759;
+  }
+
+  a {
+    color: #fff;
   }
 
   h1 {

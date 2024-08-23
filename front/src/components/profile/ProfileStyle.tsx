@@ -1,20 +1,4 @@
-import styled, {css} from "styled-components";
-import IcnGear from "../../assets/IcnGear.svg?react"
-
-const hoverShadow = css `
-  cursor: pointer;
-  transition: 0.3s;
-  &:hover{
-    text-shadow: 0px 0px 10px currentcolor;
-  }
-`
-
-const IconGear = styled(IcnGear)`
-  ${hoverShadow}
-  &:hover {
-    filter: drop-shadow(0 0 5px #fff);
-  }
-`
+import styled from "styled-components";
 
 const ProfileContainer = styled.div`
   max-width: 100%;
@@ -22,43 +6,14 @@ const ProfileContainer = styled.div`
   margin: 0 auto;
 `
 
-const Header = styled.div`
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 10px;
-  background-color: #54A759;
-  padding: 15px 30px;
-`
-
 const Footer = styled.div`
   background: #54A759;
+  position: fixed;
+  bottom: 0;
   padding: 15px 0px;
   width: 100%;
   color: #fff;
   text-align: center;
-`
-
-const HeaderList = styled.ul`
-  display: flex;
-  align-items: center;
-  li {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    ${hoverShadow}
-  }
-  li + li {
-    margin-left: 30px;
-  }
-  li.active {
-    background: #2D8633;
-    padding: 10px;
-    border-radius: 10px;
-  }
 `
 
 const ProfileCard = styled.div`
@@ -71,11 +26,12 @@ const ProfileCard = styled.div`
   background: #83C687;
   border-radius: 10px;
   padding: 30px;
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   p {
     margin: 15px 0px 60px 0px;
   }
   img {
-    max-width: 100px;
+    max-width: 100%;
     border-radius: 100%;
     border: 3px solid #000;
     margin-bottom: 30px;
@@ -94,7 +50,11 @@ const LinkList = styled.ul`
     border-radius: 10px;
     margin-bottom: 30px;
     padding: 15px;
+    transition: 0.3s;
+  }
+  li:hover {
+    background: #2D8633;
   }
 `
 
-export { Header, Footer, ProfileContainer, HeaderList, IconGear, ProfileCard, LinkList }
+export { Footer, ProfileContainer, ProfileCard, LinkList,  }

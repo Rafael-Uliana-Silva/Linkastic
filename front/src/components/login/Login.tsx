@@ -3,6 +3,7 @@ import axios from 'axios';
 import { LoginContainer, LoginForm, IconLogo } from './LoginStyle'
 import { useNavigate, NavLink } from 'react-router-dom';
 import { UserContext } from '../../../Context/UserContext';
+import setToken from '../../utils/setToken';
 
 const Login = () => {
   const [credential, setCredential] = React.useState("");
@@ -22,6 +23,9 @@ const Login = () => {
     try {
       const response = await axios.post("http://localhost:3001/login", {credential, password});
       const userId = response.data.id
+
+      await setToken(credential, password);
+
       setLoggedUserId(userId)
       navigate(`/profile/${userId}`);
     } catch (err) {

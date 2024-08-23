@@ -16,6 +16,7 @@ const LoginForm = styled.div`
   flex-direction: column;
   justify-content: center;
   background: #ECECEC;
+  box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
   padding: 30px;
   text-align: left;
@@ -40,15 +41,21 @@ const LoginForm = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
+  .esqueceu span:hover {
+    text-shadow: 0px 0px 10px #8A8A8A;
+  }
   .criarConta {
-    text-align: center;
-    max-width: 157px;
     margin: 0 auto;
   }
   .criarConta span {
+    justify-content: center;
     color: #2D8633;
     text-decoration: underline;
     cursor: pointer;
+    transition: 0.3s;
+  }
+  .criarConta span:hover {
+    text-shadow: 0px 0px 10px #2D8633;
   }
 `
 

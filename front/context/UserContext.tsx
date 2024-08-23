@@ -27,7 +27,12 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   const fetchUserData = async (id: string) => {
     try {
-      const response = await axios.get(`http://localhost:3001/users/${id}`);
+      const token = localStorage.getItem("token")
+      const response = await axios.get(`http://localhost:3001/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
       setUserData(response.data);
     } catch (error) {
       console.error("Failed to fetch user data", error);

@@ -1,7 +1,9 @@
 import React from 'react';
-import { Header, Footer, ProfileContainer, ProfileCard, HeaderList, IconGear, LinkList } from "./ProfileStyle";
-import { IconLogo, IconLink, IconOlho, IconPerfil, IconSeta } from './ProfileIcons';
-import { useParams } from 'react-router-dom';
+import Header from "../header/Header";
+import { Footer, ProfileContainer, ProfileCard, LinkList } from "./ProfileStyle";
+import { IconLink, IconSeta } from './ProfileIcons';
+import defaultImg from "../../assets/defaultImg.svg"
+import { Link, useParams } from 'react-router-dom';
 import { UserContext } from "../../../Context/UserContext";
 
 const ProfileMain = () => {
@@ -25,25 +27,25 @@ const ProfileMain = () => {
   return (
     <div>
       <ProfileContainer>
-        <Header>
-          <IconLogo />
-          <HeaderList>
-            <li className='active'><span><IconOlho /></span>Visualizar Perfil</li>
-            <li><span><IconLink /></span>Seus Links</li>
-            <li><span><IconPerfil /></span>Configurar Perfil</li>
-          </HeaderList>
-          <IconGear />
-        </Header>
+        <Header />
         <ProfileCard>
-          <img src={userData.img || 'default-img.png'} alt="Profile" />
+          <img src={userData.img || defaultImg} alt="Imagem de usúario" />
           <h1>{userData.username}</h1>
           <p>{userData.email}</p>
           <LinkList>
-            {userData.links.map((link, index) => (
-              <li key={index}>
-                <span><IconLink /> {link.title}</span><span><IconSeta /></span>
+            {userData.links.length === 0 ? (
+              <li>
+                <span>
+                  <Link to={'links'}>Comece a adicionar Links +</Link>
+                </span>
               </li>
-            ))}
+            ) : (
+              userData.links.map((link, index) => (
+                <li key={index}>
+                  <span><IconLink /> {link.title}</span><span><IconSeta /></span>
+                </li>
+              ))
+            )}
           </LinkList>
         </ProfileCard>
       </ProfileContainer>
