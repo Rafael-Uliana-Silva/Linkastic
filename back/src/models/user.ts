@@ -3,6 +3,7 @@ import { UserLinks, linkSchema } from "./links";
 
 interface IUser extends Document {
   username: string;
+  img: string;
   email: string;
   password: string;
   criado: Date;
@@ -16,6 +17,9 @@ const userSchema = new Schema<IUser>({
     required: true,
     unique: true,
     trim: true,
+  },
+  img: {
+    type: String,
   },
   email: {
     type: String,
