@@ -201,7 +201,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-  input {
+  input, select, textarea {
     border: 1px solid #8A8A8A;
     border-radius: 30px;
     outline: none;

@@ -2,8 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import { LoginContainer, LoginForm, IconLogo } from './LoginStyle'
 import { useNavigate, NavLink } from 'react-router-dom';
-import { UserContext } from '../../../Context/UserContext';
 import setToken from '../../utils/setToken';
+import useUser from '../../utils/useUser';
 
 const Login = () => {
   const [credential, setCredential] = React.useState("");
@@ -11,11 +11,7 @@ const Login = () => {
   const [error, setError] = React.useState<string | null>(null);
   const navigate = useNavigate();
   
-  const context = React.useContext(UserContext);
-  if (!context) {
-    throw new Error('UserContext must be used within a UserProvider');
-  }
-  const { setLoggedUserId } = context;
+  const { setLoggedUserId } = useUser();
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -23,11 +19,11 @@ const Login = () => {
     try {
       const response = await axios.post("http://localhost:3001/login", {credential, password});
       const userId = response.data.id
-
       await setToken(credential, password);
-
+      localStorage.setItem('loggedUserId', userId);
       setLoggedUserId(userId)
-      navigate(`/profile/${userId}`);
+      navigate(`/profile/${userId}/view`);
+      
     } catch (err) {
       console.log(err)
       setError("Credenciais inválidas")

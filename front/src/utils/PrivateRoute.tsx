@@ -1,19 +1,14 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { UserContext } from '../../Context/UserContext';
 
 const PrivateRoute: React.FC = () => {
-  const context = React.useContext(UserContext);
-  if (!context) {
-    throw new Error('UserContext must be used within a UserProvider');
-  }
-  const { loggedUserId } = context;
+  const userId = localStorage.getItem('loggedUserId');
 
-  if (!loggedUserId) {
+  if (!userId) {
     return <Navigate to="/" />;
   }
 
-  return <Outlet />; 
-}
+  return <Outlet />;
+};
 
 export default PrivateRoute;

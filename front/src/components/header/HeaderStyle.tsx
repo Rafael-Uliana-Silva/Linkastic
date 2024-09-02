@@ -26,7 +26,7 @@ const IconLogout = styled(IcnLogout)`
 const HeaderContainer = styled.div`
   width: 100%;
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 30px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;

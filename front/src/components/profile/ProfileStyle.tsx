@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const ProfileContainer = styled.div`
   max-width: 100%;
-  padding: 30px;
   margin: 0 auto;
 `
 
@@ -16,8 +15,8 @@ const Footer = styled.div`
   text-align: center;
 `
 
-const ProfileCard = styled.div`
-  max-width: 20%;
+const ProfileCardContainer = styled.div`
+  max-width: 300px;
   margin: 70px auto;
   display: flex;
   flex-direction: column;
@@ -57,4 +56,69 @@ const LinkList = styled.ul`
   }
 `
 
-export { Footer, ProfileContainer, ProfileCard, LinkList,  }
+const LinkConfigContainer = styled.div`
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+`
+
+const LinkCard = styled.div`
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 450px;
+`
+
+const LinkConfig = styled.div`
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+`
+
+const LinkAdd = styled.button`
+  width: 100%;
+  margin: 30px 0px;
+  border-color: #2D8633;
+  border-radius: 10px;
+  color: #2D8633;
+  padding: 10px 0;
+  transition: 0.3s;
+  &&:hover {
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(45, 134, 51, 0.8);
+  }
+`
+
+const LinkTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const LinkListConfig = styled.div`
+  background-color: #83C687;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+`
+
+const LinkInput = styled.div `
+  display: flex;
+  flex-direction: column;
+  label {
+    color: #fff;
+    font-size: 14px;
+  }
+  input, select {
+    margin-bottom: 15px;
+  }
+`
+
+export { Footer, ProfileContainer, ProfileCardContainer, LinkList, LinkConfig, LinkConfigContainer, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle }
