@@ -1,12 +1,12 @@
 import GlobalStyle from './GlobalStyle';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { UserProvider } from "./context/UserContext";
-import Login from './components/login/Login';
-import Register from './components/login/Register';
-import PrivateRoute from './utils/PrivateRoute';
-import ProfileMain from './components/profile/ProfileMain'
-import ProfileLinks from './components/profile/ProfileLinks';
-import ProfileConfig from './components/profile/ProfileConfig';
+import { UserProvider } from "./Context/UserContext";
+import Login from './Components/login/Login';
+import Register from './Components/login/Register';
+import PrivateRoute from './Utils/PrivateRoute';
+import ProfileMain from './Components/profile/ProfileMain'
+import ProfileLinks from './Components/profile/ProfileLinks';
+import ProfileConfig from './Components/profile/ProfileConfig';
 
 function App() {
   return (

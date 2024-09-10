@@ -1,5 +1,5 @@
 import React from "react";
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig, Method } from "axios";
 
 type FetchState<T> = {
   data: T | null;
@@ -11,6 +11,7 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 function useAxios<T>(
   url: string,
+  method: Method = 'GET', 
   options?: AxiosRequestConfig,
   delay: number = 0 
 ): FetchState<T> {
@@ -29,7 +30,9 @@ function useAxios<T>(
       setData(null);
       try {
         await sleep(delay);
-        const response = await axios.get<T>(url, {
+        const response = await axios({
+          method: method, 
+          url: url,
           ...optionsRef.current,
           cancelToken: source.token,
         });
@@ -48,7 +51,7 @@ function useAxios<T>(
     return () => {
       source.cancel();
     };
-  }, [url, delay]);
+  }, [url, method, delay]);
 
   return { data, loading, error };
 }

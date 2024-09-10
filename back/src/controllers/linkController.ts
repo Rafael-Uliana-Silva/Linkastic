@@ -16,7 +16,7 @@ const getAllLinks = async (req: Request, res: Response): Promise<void> => {
 
 const getLinkById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = await User.findById(req.params.userId);
+    const user = await User.findById(req.params.id);
     if (!user) {
       res.status(404).json({ message: 'Usuário não encontrado' });
       return;
@@ -32,10 +32,10 @@ const getLinkById = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// Cria um novo link para um usuário específico
+
 const createLink = async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = await User.findById(req.params.userId);
+    const user = await User.findById(req.params.id);
     if (!user) {
       res.status(404).json({ message: 'Usuário não encontrado' });
       return;
@@ -48,10 +48,9 @@ const createLink = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// Atualiza um link específico de um usuário
 const updateLink = async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = await User.findById(req.params.userId);
+    const user = await User.findById(req.params.id);
     if (!user) {
       res.status(404).json({ message: 'Usuário não encontrado' });
       return;
@@ -62,7 +61,7 @@ const updateLink = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    link.set(req.body); // Atualiza o link
+    link.set(req.body);
     await user.save();
     res.status(200).json(link);
   } catch (err) {
@@ -70,10 +69,9 @@ const updateLink = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// Exclui um link específico de um usuário
 const deleteLink = async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = await User.findById(req.params.userId);
+    const user = await User.findById(req.params.id);
     if (!user) {
       res.status(404).json({ message: 'Usuário não encontrado' });
       return;

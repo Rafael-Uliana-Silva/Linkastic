@@ -14,11 +14,11 @@ const Register = () => {
     event.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:3001/register', { username, email, password });
+      const response = await axios.post('http://localhost:3005/register', { username, email, password });
       
       localStorage.setItem('token', response.data.token);
       
-      navigate('/profile');
+      navigate('/');
     } catch (error: any) {
       if (error.response && error.response.data) {
         setError(error.response.data.message);

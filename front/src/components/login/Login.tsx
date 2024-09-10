@@ -2,8 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import { LoginContainer, LoginForm, IconLogo } from './LoginStyle'
 import { useNavigate, NavLink } from 'react-router-dom';
-import setToken from '../../utils/setToken';
-import useUser from '../../utils/useUser';
+import setToken from '../../Utils/setToken';
+import useUser from '../../Utils/useUser';
 
 const Login = () => {
   const [credential, setCredential] = React.useState("");
@@ -17,7 +17,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/login", {credential, password});
+      const response = await axios.post("http://localhost:3005/login", {credential, password});
       const userId = response.data.id
       await setToken(credential, password);
       localStorage.setItem('loggedUserId', userId);

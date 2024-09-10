@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../../Context/UserContext';
 import { HeaderContainer, HeaderList, IconGear, IconLogout } from './HeaderStyle';
 import { IconOlho, IconPerfil, IconLink } from "../profile/ProfileIcons";
 import { NavLink, useLocation } from 'react-router-dom';

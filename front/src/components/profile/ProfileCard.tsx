@@ -4,7 +4,7 @@ import defaultImg from "../../assets/defaultImg.svg";
 import { ProfileCardContainer, LinkList } from './ProfileStyle';
 import Spinner from '../spinner/Spinner';
 import { Link } from 'react-router-dom';
-import useUser from '../../utils/useUser';
+import useUser from '../../Utils/useUser';
 
 const ProfileCard = () => {
   const { data } = useUser();

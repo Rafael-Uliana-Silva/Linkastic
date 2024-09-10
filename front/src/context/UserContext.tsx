@@ -1,16 +1,17 @@
 import React from "react";
-import useAxios from "../utils/useAxios";
-import Spinner from "../components/spinner/Spinner";
+import useAxios from "../Utils/useAxios";
+import Spinner from "../Components/spinner/Spinner";
+import ErrorPage from "../Components/error/ErrorPage";
 
 export type UserData = {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   img: string;
   password: string;
   admin: boolean;
   criado: Date;
-  links: { title: string; link: string }[];
+  links: { title: string; link: string, _id: string }[];
 };
 
 type UserContextType = {
@@ -27,7 +28,8 @@ const UserContext = React.createContext<UserContextType | undefined>(undefined);
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [loggedUserId, setLoggedUserId] = React.useState<string | null>(localStorage.getItem('loggedUserId'));
   const { data, loading, error } = useAxios<UserData>(
-    loggedUserId ? `http://localhost:3001/users/${loggedUserId}` : '',
+    loggedUserId ? `http://localhost:3005/users/${loggedUserId}` : '',
+    'GET',
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token") || ''}`,
@@ -52,7 +54,7 @@ const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   return (
     <UserContext.Provider value={contextValue}>
-      {loading ? <Spinner /> : error ? <p>Error: {error}</p> : children}
+      {loading ? <Spinner /> : error ? <ErrorPage /> : children}
     </UserContext.Provider>
   );
 };
