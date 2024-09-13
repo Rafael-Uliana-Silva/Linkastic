@@ -196,7 +196,7 @@ const GlobalStyle = createGlobalStyle`
 
   /* Estilos gerais */
 
-  h1, h2, h3, p, input, textarea, label, li, a, button {
+  h1, h2, h3, p, input, textarea, label, li, a, button, select {
     font-family: Inter;
     font-weight: 400;
   }
@@ -245,6 +245,10 @@ const GlobalStyle = createGlobalStyle`
 
   span {
     display: flex;
+  }
+
+  svg {
+    fill: #fff;
   }
 `
 

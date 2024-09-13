@@ -51,9 +51,12 @@ const LinkList = styled.ul`
     padding: 15px;
     transition: 0.3s;
   }
-  li:hover {
-    background: #2D8633;
+
+  .neon:hover {
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
   }
+
 `
 
 const LinkConfigContainer = styled.div`

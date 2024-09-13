@@ -6,8 +6,21 @@ import { IconRemove } from './ProfileIcons';
 import useUser from '../../Utils/useUser';
 import axios from 'axios';
 import Spinner from '../spinner/Spinner';
+import { siGithub, siInstagram, siX, siYoutube, siTwitch, siFacebook } from 'simple-icons/icons';
 
 const ProfileLinks = () => {
+
+  const platforms = [
+    { title: siGithub.title, hex: `#${siGithub.hex}`, svg: siGithub.svg },
+    { title: siInstagram.title, hex: `#${siInstagram.hex}`, svg: siInstagram.svg },
+    { title: siX.title, hex: `#${siX.hex}`, svg: siX.svg },
+    { title: siYoutube.title, hex: `#${siYoutube.hex}`, svg: siYoutube.svg },
+    { title: siTwitch.title, hex: `#${siTwitch.hex}`, svg: siTwitch.svg },
+    { title: siFacebook.title, hex: `#${siFacebook.hex}`, svg: siFacebook.svg },
+    { title: 'Outra', hex: '#000000', svg: '' }
+  ];
+
+
   const { data } = useUser();
   const [links, setLinks] = React.useState(data?.links || []);
   if (!data) {
@@ -90,10 +103,9 @@ const ProfileLinks = () => {
                   value={link.title}
                   onChange={(e) => changeLink(index, 'title', e.target.value)}
                 >
-                  <option value="">Selecione uma plataforma</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="Twitter">Twitter</option>
+                  {platforms.map((plataforma) =>
+                    <option value={plataforma.title}>{plataforma.title}</option>
+                  )}
                 </select>
                 <label htmlFor={`link-${index}`}>Link</label>
                 <input
