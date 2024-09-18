@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../header/Header';
 import ProfileCard from './ProfileCard';
-import { LinkConfigContainer, LinkConfig, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle } from './ProfileStyle';
+import { ConfigContainer, LinkConfig, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle } from './ProfileStyle';
 import { IconRemove } from './ProfileIcons';
 import useUser from '../../Utils/useUser';
 import axios from 'axios';
@@ -11,13 +11,13 @@ import { siGithub, siInstagram, siX, siYoutube, siTwitch, siFacebook } from 'sim
 const ProfileLinks = () => {
 
   const platforms = [
-    { title: siGithub.title, hex: `#${siGithub.hex}`, svg: siGithub.svg },
-    { title: siInstagram.title, hex: `#${siInstagram.hex}`, svg: siInstagram.svg },
-    { title: siX.title, hex: `#${siX.hex}`, svg: siX.svg },
-    { title: siYoutube.title, hex: `#${siYoutube.hex}`, svg: siYoutube.svg },
-    { title: siTwitch.title, hex: `#${siTwitch.hex}`, svg: siTwitch.svg },
-    { title: siFacebook.title, hex: `#${siFacebook.hex}`, svg: siFacebook.svg },
-    { title: 'Outra', hex: '#000000', svg: '' }
+    { title: 'Outra'},
+    { title: siGithub.title},
+    { title: siInstagram.title},
+    { title: siX.title},
+    { title: siYoutube.title},
+    { title: siTwitch.title},
+    { title: siFacebook.title},
   ];
 
 
@@ -81,7 +81,7 @@ const ProfileLinks = () => {
   return (
     <div>
       <Header />
-      <LinkConfigContainer>
+      <ConfigContainer>
         <LinkCard>
           <ProfileCard />
         </LinkCard>
@@ -118,7 +118,7 @@ const ProfileLinks = () => {
             </LinkListConfig>
           ))}
         </LinkConfig>
-      </LinkConfigContainer>
+      </ConfigContainer>
     </div>
   );
 };

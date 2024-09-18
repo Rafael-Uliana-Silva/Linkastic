@@ -59,7 +59,7 @@ const LinkList = styled.ul`
 
 `
 
-const LinkConfigContainer = styled.div`
+const ConfigContainer = styled.div`
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
@@ -124,4 +124,41 @@ const LinkInput = styled.div `
   }
 `
 
-export { Footer, ProfileContainer, ProfileCardContainer, LinkList, LinkConfig, LinkConfigContainer, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle }
+const UserConfig = styled.div`
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+`
+
+const UserInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+`
+
+const ImageContainer = styled.div`
+  width: 45%;
+  img {
+    padding-top: 25px;
+    width: 250px;
+  }
+  text-align: center;
+`
+
+const FormContainer = styled.div`
+  width: 50%;
+  form {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    margin-bottom: 20px;
+  }
+`
+
+export { Footer, ProfileContainer, ProfileCardContainer, LinkList, LinkConfig, ConfigContainer, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle, UserConfig, UserInfoContainer, ImageContainer, FormContainer}

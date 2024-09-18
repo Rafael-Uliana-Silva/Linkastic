@@ -18,13 +18,12 @@ const ProfileCard = () => {
   const getPlatformColor = (platform: string) => {
     const formattedPlatform = `si${platform.charAt(0).toUpperCase() + platform.slice(1).toLowerCase()}`;
     const icon = simpleIcons[formattedPlatform as keyof typeof simpleIcons];
-    return icon?.hex ? `#${icon.hex}` : '#54A759'; // Cor padrão se o ícone não for encontrado
+    return icon?.hex ? `#${icon.hex}` : '#54A759';
   };
 
   const getPlatformIcon = (platform: string) => {
     const formattedPlatform = `si${platform.charAt(0).toUpperCase() + platform.slice(1).toLowerCase()}`;
     const icon = simpleIcons[formattedPlatform as keyof typeof simpleIcons];
-    
     if (icon && icon?.svg) {
 
       return (
@@ -44,21 +43,23 @@ const ProfileCard = () => {
       <h1>{data.username}</h1>
       <p>{data.email}</p>
       <LinkList>
-        {links.length === 0 ? (
-          <li>
-            <span>
-              <Link to={'links'}>Comece a adicionar Links +</Link>
-            </span>
-          </li>
-        ) : (
-          links.map((link, index) => (
-            <li key={index} style={{ backgroundColor: getPlatformColor(link.title) || "#2D8633" }} className="neon" >
-              {getPlatformIcon(link.title)}
-              <span>{link.title}</span>
-              <span><IconSeta /></span>
+          {links.length === 0 ? (
+            <li>
+              <span>
+                <Link to={'links'}>Comece a adicionar Links +</Link>
+              </span>
             </li>
-          ))
-        )}
+          ) : (
+            links.map((link, index) => (
+              <Link to={link.link} target='blank'>
+                <li key={index} style={{ backgroundColor: getPlatformColor(link.title) || "#2D8633" }} className="neon" >
+                  {getPlatformIcon(link.title)}
+                  <span>{link.title}</span>
+                  <span><IconSeta /></span>
+                </li>
+              </Link>
+            ))
+          )}
       </LinkList>
     </ProfileCardContainer>
   );

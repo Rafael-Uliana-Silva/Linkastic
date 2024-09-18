@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user"
+import bcrypt from "bcryptjs"
 
 const getAllUsers = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -34,16 +35,35 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
 };
 
 const updateUser = async (req: Request, res: Response): Promise<void> => {
+  const { oldPassword, newPassword, username, email } = req.body;
+
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!updatedUser) {
+    const user = await User.findById(req.params.id);
+    
+    if (!user) {
       res.status(404).json({ message: 'Usuário não encontrado' });
-    } else {
-      res.status(200).json(updatedUser);
+      return;
     }
+
+    if (oldPassword && newPassword) {
+      const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
+      
+      if (!isPasswordValid) {
+        res.status(400).json({ message: 'Senha antiga incorreta' });
+        return;
+      }
+
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      user.password = hashedPassword;
+    }
+
+    if (username) user.username = username;
+    if (email) user.email = email;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json(updatedUser);
+
   } catch (err) {
     res.status(400).json({ message: 'Erro ao atualizar usuário', error: err });
   }
