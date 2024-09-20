@@ -35,7 +35,7 @@ const createUser = async (req: Request, res: Response): Promise<void> => {
 };
 
 const updateUser = async (req: Request, res: Response): Promise<void> => {
-  const { oldPassword, newPassword, username, email } = req.body;
+  const { oldPassword, newPassword, username, email, img } = req.body;
 
   try {
     const user = await User.findById(req.params.id);
@@ -59,6 +59,7 @@ const updateUser = async (req: Request, res: Response): Promise<void> => {
 
     if (username) user.username = username;
     if (email) user.email = email;
+    if (img)  user.img = img;
 
     const updatedUser = await user.save();
 

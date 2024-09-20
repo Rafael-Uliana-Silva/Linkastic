@@ -1,5 +1,4 @@
 import { IconLink, IconSeta } from './ProfileIcons';
-import defaultImg from "../../assets/defaultImg.svg";
 import { ProfileCardContainer, LinkList } from './ProfileStyle';
 import Spinner from '../spinner/Spinner';
 import { Link } from 'react-router-dom';
@@ -39,7 +38,7 @@ const ProfileCard = () => {
 
   return (
     <ProfileCardContainer>
-      <img src={data.img || defaultImg} alt="Imagem de usúario" />
+      <img src={data.img} alt="Imagem de usúario" />
       <h1>{data.username}</h1>
       <p>{data.email}</p>
       <LinkList>
@@ -51,7 +50,7 @@ const ProfileCard = () => {
             </li>
           ) : (
             links.map((link, index) => (
-              <Link to={link.link} target='blank'>
+              <Link to={link.link} target='blank' key={link._id}>
                 <li key={index} style={{ backgroundColor: getPlatformColor(link.title) || "#2D8633" }} className="neon" >
                   {getPlatformIcon(link.title)}
                   <span>{link.title}</span>

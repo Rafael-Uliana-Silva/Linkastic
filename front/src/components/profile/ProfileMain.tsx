@@ -3,7 +3,6 @@ import Header from "../header/Header";
 import ProfileCard from './ProfileCard';
 import { Footer, ProfileContainer} from "./ProfileStyle";
 
-
 const ProfileMain = () => {
   return (
     <div>

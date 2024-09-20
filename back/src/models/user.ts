@@ -20,6 +20,7 @@ const userSchema = new Schema<IUser>({
   },
   img: {
     type: String,
+    default: "http://localhost:3005/images/defaultImg.svg",
   },
   email: {
     type: String,

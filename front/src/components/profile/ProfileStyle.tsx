@@ -30,9 +30,9 @@ const ProfileCardContainer = styled.div`
     margin: 15px 0px 60px 0px;
   }
   img {
-    max-width: 100%;
+    max-width: 150px;
+    max-height: 150px;
     border-radius: 100%;
-    border: 3px solid #000;
     margin-bottom: 30px;
   }
 `
@@ -143,8 +143,10 @@ const UserInfoContainer = styled.div`
 const ImageContainer = styled.div`
   width: 45%;
   img {
-    padding-top: 25px;
-    width: 250px;
+    margin-top: 50px;
+    max-height: 150px;
+    max-width: 150px;
+    border-radius: 200%;
   }
   text-align: center;
 `

@@ -4,12 +4,14 @@ import icnSpinner from "../../assets/icnSpinner.svg?react"
 
 const SpinnerContainer = styled.div`
   width: 150px;
-  padding-top: 30px;
+  padding: 30px 0;
   margin: 0 auto;
 `
 
 const IconSpinner = styled(icnSpinner) `
   display: block;
+  border-radius: 100%;
+  margin-top: 15px;
 `
 
 const Spinner = () => {

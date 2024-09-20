@@ -3,8 +3,6 @@ import Header from '../header/Header';
 import ProfileCard from './ProfileCard';
 import { ConfigContainer, LinkCard, UserConfig, UserInfoContainer, ImageContainer, FormContainer } from './ProfileStyle';
 import useUser from '../../Utils/useUser';
-import Spinner from '../spinner/Spinner';
-import defaultImg from "../../assets/defaultImg.svg";
 import axios from 'axios';
 
 const ProfileConfig = () => {
@@ -14,33 +12,48 @@ const ProfileConfig = () => {
   const [email, setEmail] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [imgSrc, setImgSrc] = useState(data?.img || '');
 
   useEffect(() => {
     if (data) {
       setUsername(data.username);
       setEmail(data.email);
+      setImgSrc(data.img); 
     }
   }, [data]);
 
-  const handleSaveChanges = async () => {
-    try {
-      const updatedData: {
-        username: string;
-        email: string;
-        oldPassword?: string;  
-        newPassword?: string;  
-      } = {
-        username,
-        email,
+  // Função para tratar a imagem
+  const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        if (typeof reader.result === 'string') {
+          setImgSrc(reader.result); // result já é a string Base64
+        }
       };
 
-      // Verifica se o usuário deseja alterar a senha
-      if (oldPassword && newPassword) {
-        updatedData.oldPassword = oldPassword;
-        updatedData.newPassword = newPassword;
-      }
+      reader.readAsDataURL(file); // Converte a imagem para Base64
+    }
+  };
 
-      await axios.patch(`http://localhost:3005/users/${data?._id}`, updatedData);
+  const handleSaveChanges = async () => {
+    try {
+      const updatedData = {
+        username,
+        email,
+        oldPassword: oldPassword || undefined, 
+        newPassword: newPassword || undefined, 
+        img: imgSrc, 
+      };
+
+
+      await axios.patch(`http://localhost:3005/users/${data?._id}`, updatedData, {
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+      });
 
       alert('Dados atualizados com sucesso!');
     } catch (error) {
@@ -48,10 +61,6 @@ const ProfileConfig = () => {
       alert('Falha ao atualizar os dados.');
     }
   };
-
-  if (!data) {
-    return <Spinner />;
-  }
 
   return (
     <div>
@@ -66,8 +75,8 @@ const ProfileConfig = () => {
           <UserInfoContainer>
             <ImageContainer>
               <p>Foto de perfil</p>
-              <img src={defaultImg} alt="Imagem de perfil" />
-              <input type="file" className='btn'/>
+              <img src={imgSrc} alt="Imagem de perfil" />
+              <input type="file" className='btn' onChange={handleImage} />
             </ImageContainer>
             <FormContainer>
               <p>Informações de usuário</p>

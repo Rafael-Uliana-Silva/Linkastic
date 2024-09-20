@@ -5,7 +5,6 @@ import { ConfigContainer, LinkConfig, LinkCard, LinkAdd, LinkListConfig, LinkInp
 import { IconRemove } from './ProfileIcons';
 import useUser from '../../Utils/useUser';
 import axios from 'axios';
-import Spinner from '../spinner/Spinner';
 import { siGithub, siInstagram, siX, siYoutube, siTwitch, siFacebook } from 'simple-icons/icons';
 
 const ProfileLinks = () => {
@@ -23,10 +22,7 @@ const ProfileLinks = () => {
 
   const { data } = useUser();
   const [links, setLinks] = React.useState(data?.links || []);
-  if (!data) {
-    return <Spinner />;
-  }
-  const url = `http://localhost:3005/users/${data._id}/links`;
+  const url = `http://localhost:3005/users/${data?._id}/links`;
 
   const addLink = async () => {
     const newLink = { title: "Novo Link", link: "https://www.exemplo.com" };
@@ -103,8 +99,8 @@ const ProfileLinks = () => {
                   value={link.title}
                   onChange={(e) => changeLink(index, 'title', e.target.value)}
                 >
-                  {platforms.map((plataforma) =>
-                    <option value={plataforma.title}>{plataforma.title}</option>
+                  {platforms.map((plataforma, index) =>
+                    <option key={index} value={plataforma.title}>{plataforma.title}</option>
                   )}
                 </select>
                 <label htmlFor={`link-${index}`}>Link</label>
