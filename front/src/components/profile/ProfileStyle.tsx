@@ -5,16 +5,6 @@ const ProfileContainer = styled.div`
   margin: 0 auto;
 `
 
-const Footer = styled.div`
-  background: #54A759;
-  position: fixed;
-  bottom: 0;
-  padding: 15px 0px;
-  width: 100%;
-  color: #fff;
-  text-align: center;
-`
-
 const ProfileCardContainer = styled.div`
   max-width: 300px;
   margin: 70px auto;
@@ -163,4 +153,4 @@ const FormContainer = styled.div`
   }
 `
 
-export { Footer, ProfileContainer, ProfileCardContainer, LinkList, LinkConfig, ConfigContainer, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle, UserConfig, UserInfoContainer, ImageContainer, FormContainer}
+export { ProfileContainer, ProfileCardContainer, LinkList, LinkConfig, ConfigContainer, LinkCard, LinkAdd, LinkListConfig, LinkInput, LinkTitle, UserConfig, UserInfoContainer, ImageContainer, FormContainer}

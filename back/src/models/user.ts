@@ -9,6 +9,8 @@ interface IUser extends Document {
   criado: Date;
   admin: boolean;
   links: Types.DocumentArray<UserLinks>;
+  resetPasswordToken: string;
+  resetPasswordExpires?: Date;
 }
 
 const userSchema = new Schema<IUser>({
@@ -41,6 +43,8 @@ const userSchema = new Schema<IUser>({
     default: false,
   },
   links: [linkSchema],
+  resetPasswordToken: {type: String},
+  resetPasswordExpires: {type: Date},
 })
 
 const User = model<IUser>("User", userSchema);

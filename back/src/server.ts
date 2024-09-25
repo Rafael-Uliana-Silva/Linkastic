@@ -22,10 +22,12 @@ import userRoute from "./routes/userRoute"
 import linkRoute from "./routes/linkRoute"
 import loginRoute from "./routes/loginRoute"
 import registerRoute from "./routes/registerRoute"
+import resetRoute from "./routes/resetRoute"
 app.use("/users", userRoute);
 app.use("/users/:id/links", linkRoute);
 app.use("/login", loginRoute)
 app.use("/register", registerRoute)
+app.use("/resetPassword", resetRoute)
 
 app.listen(PORT, () => {
   console.log(`Server iniciado na url: http://localhost:${PORT}`);

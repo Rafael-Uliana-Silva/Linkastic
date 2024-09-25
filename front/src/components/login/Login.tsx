@@ -29,7 +29,7 @@ const Login = () => {
       setError("Credenciais inválidas")
     }
   }
-
+  
   return (
     <LoginContainer>
       <div className='logo'>
@@ -55,7 +55,7 @@ const Login = () => {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-          <p className='esqueceu'>Esqueceu a senha? <span>Clique aqui</span></p>
+          <p className='esqueceu'>Esqueceu a senha? <NavLink to={'/esqueceu'}><span>Clique aqui</span></NavLink></p>
           <button className='btn' type='submit'>
             <p>Entrar</p>
           </button>

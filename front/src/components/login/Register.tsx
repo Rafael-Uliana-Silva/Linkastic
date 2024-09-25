@@ -63,7 +63,6 @@ const Register = () => {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
-        <p className='esqueceu'>Esqueceu a senha? <span>Clique aqui</span></p>
         <button className='btn' type='submit'>
           <p>Registrar</p>
         </button>

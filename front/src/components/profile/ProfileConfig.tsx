@@ -4,6 +4,7 @@ import ProfileCard from './ProfileCard';
 import { ConfigContainer, LinkCard, UserConfig, UserInfoContainer, ImageContainer, FormContainer } from './ProfileStyle';
 import useUser from '../../Utils/useUser';
 import axios from 'axios';
+import Alert, { AlertColor } from "@mui/material/Alert";
 
 const ProfileConfig = () => {
   const { data } = useUser();
@@ -13,6 +14,10 @@ const ProfileConfig = () => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [imgSrc, setImgSrc] = useState(data?.img || '');
+  
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertSeverity, setAlertSeverity] = useState<AlertColor>('success');
+  const [showAlert, setShowAlert] = useState(false );
 
   useEffect(() => {
     if (data) {
@@ -22,7 +27,6 @@ const ProfileConfig = () => {
     }
   }, [data]);
 
-  // Função para tratar a imagem
   const handleImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -30,11 +34,11 @@ const ProfileConfig = () => {
 
       reader.onloadend = () => {
         if (typeof reader.result === 'string') {
-          setImgSrc(reader.result); // result já é a string Base64
+          setImgSrc(reader.result);
         }
       };
 
-      reader.readAsDataURL(file); // Converte a imagem para Base64
+      reader.readAsDataURL(file);
     }
   };
 
@@ -48,17 +52,20 @@ const ProfileConfig = () => {
         img: imgSrc, 
       };
 
-
       await axios.patch(`http://localhost:3005/users/${data?._id}`, updatedData, {
         headers: {
           'Content-Type': 'application/json', 
         },
       });
-
-      alert('Dados atualizados com sucesso!');
+      setAlertMessage('Dados atualizados com sucesso! Recarregando...');
+      setAlertSeverity('success');
+      setShowAlert(true);
+      window.location.reload()
     } catch (error) {
       console.error('Erro ao atualizar dados:', error);
-      alert('Falha ao atualizar os dados.');
+      setAlertMessage('Falha ao atualizar os dados. A imagem pode ser muito grande.');
+      setAlertSeverity('error');
+      setShowAlert(true);
     }
   };
 
@@ -78,6 +85,7 @@ const ProfileConfig = () => {
               <img src={imgSrc} alt="Imagem de perfil" />
               <input type="file" className='btn' onChange={handleImage} />
             </ImageContainer>
+            
             <FormContainer>
               <p>Informações de usuário</p>
               <form>
@@ -114,6 +122,16 @@ const ProfileConfig = () => {
               </form>
             </FormContainer>
           </UserInfoContainer>
+          {showAlert && (
+            <Alert 
+              severity={alertSeverity} 
+              onClose={() => setShowAlert(false)} 
+              style={{ borderRadius: '50px' }}
+              variant='outlined'
+            >
+              {alertMessage}
+            </Alert>
+          )}
           <button className='btn' onClick={handleSaveChanges}>Salvar Alterações</button>
         </UserConfig>
       </ConfigContainer>

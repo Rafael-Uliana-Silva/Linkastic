@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
           return res.status(400).json({ message: 'E-mail ou nome de usuário já está em uso' });
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10); // Verifique se 'password' não é undefined
+      const hashedPassword = await bcrypt.hash(password, 10); 
 
       const newUser = new User({
           username,

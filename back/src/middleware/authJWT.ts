@@ -24,3 +24,8 @@ export const authenticateJWT = (req: AuthenticatedRequest, res: Response, next: 
     res.status(401).json({message: "Token inválido"});
   }
 }
+
+export const generateResetToken = (email: string) => {
+  const token = jwt.sign({ email }, secretKey, {expiresIn: "1h"})
+  return token;
+}
