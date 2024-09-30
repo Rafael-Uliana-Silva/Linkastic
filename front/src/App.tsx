@@ -4,6 +4,7 @@ import { UserProvider } from "./Context/UserContext";
 import Login from './Components/login/Login';
 import Register from './Components/login/Register';
 import Esqueceu from './Components/login/Esqueceu';
+import Reset from './Components/login/Reset';
 import PrivateRoute from './Utils/PrivateRoute';
 import ProfileMain from './Components/profile/ProfileMain';
 import ProfileLinks from './Components/profile/ProfileLinks';
@@ -19,6 +20,7 @@ function AnimatedRoutes() {
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/esqueceu' element={<Esqueceu />} />
+        <Route path='/resetPassword/:token' element={<Reset />} />
         <Route element={<PrivateRoute />}>
           <Route 
             path='/profile/:id/view' 

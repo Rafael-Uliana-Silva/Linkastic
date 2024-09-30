@@ -12,7 +12,7 @@ const transporter = nodeMailer.createTransport( {
 });
 
 export const enviarEmail = async (email: string, token: string) => {
-  const resetUrl = `http://localhost:3005/resetPassword/${token}`
+  const resetUrl = `http://localhost:5173/resetPassword/${token}`
 
   const mailOptions = {
     from: "rafaelulianatestes@gmail.com",
