@@ -24,6 +24,19 @@ const getUserById = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+const getUserByUsername = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    if (!user) {
+      res.status(404).json({ message: 'Usuário não encontrado' });
+    } else {
+      res.status(200).json(user);
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Erro ao buscar usuário', error: err });
+  }
+};
+
 const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const newUser = new User(req.body);
@@ -83,4 +96,4 @@ const deleteUser = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export {getAllUsers, getUserById, createUser, updateUser, deleteUser}
+export {getAllUsers, getUserById, getUserByUsername, createUser, updateUser, deleteUser}

@@ -1,5 +1,5 @@
 import styled, {css}from "styled-components";
-import IcnGear from "../../assets/IcnGear.svg?react"
+import IcnShare from "../../assets/IcnShare.svg?react"
 import IcnLogout from "../../assets/icnLogout.svg?react"
 
 const hoverShadow = css `
@@ -10,7 +10,7 @@ const hoverShadow = css `
   }
 `
 
-const IconGear = styled(IcnGear)`
+const IconShare = styled(IcnShare)`
   ${hoverShadow}
   &:hover {
     filter: drop-shadow(0 0 5px #fff);
@@ -55,4 +55,4 @@ const HeaderList = styled.ul`
   }
 `
 
-export {HeaderContainer, HeaderList, IconGear, IconLogout}
+export {HeaderContainer, HeaderList, IconShare, IconLogout}
