@@ -55,6 +55,12 @@ const ConfigContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+   /* Celular */
+  @media (max-width: 480px) {
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
 `
 
 const LinkCard = styled.div`
@@ -62,6 +68,10 @@ const LinkCard = styled.div`
   border-radius: 10px;
   width: 100%;
   max-width: 450px;
+  @media (max-width: 480px) {
+    max-width: 95%;
+    margin-bottom: 30px;
+  }
 `
 
 const LinkConfig = styled.div`
@@ -72,6 +82,10 @@ const LinkConfig = styled.div`
   width: 100%;
   max-width: 800px;
   padding: 30px;
+  @media (max-width: 480px) {
+    max-width: 80%;
+    margin-bottom: 130px;
+  }
 `
 
 const LinkAdd = styled.button`
@@ -122,12 +136,22 @@ const UserConfig = styled.div`
   width: 100%;
   max-width: 800px;
   padding: 30px;
+  @media (max-width: 480px) {
+    max-width: 80%;
+    flex-direction: column;
+    margin-bottom: 130px;
+  }
 `
 
 const UserInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 30px 0;
+  @media (max-width: 480px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const ImageContainer = styled.div`
@@ -139,6 +163,9 @@ const ImageContainer = styled.div`
     border-radius: 200%;
   }
   text-align: center;
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 `
 
 const FormContainer = styled.div`
@@ -150,6 +177,9 @@ const FormContainer = styled.div`
   }
   input {
     margin-bottom: 20px;
+  }
+  @media (max-width: 480px) {
+    width: 100%;
   }
 `
 

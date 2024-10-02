@@ -8,7 +8,6 @@ import Spinner from '../spinner/Spinner';
 import * as simpleIcons from 'simple-icons'; 
 import { NavLink } from 'react-router-dom';
 
-
 const ProfileCard = () => {
   const { username } = useParams<{ username: string }>();
   const [userData, setUserData] = React.useState<UserData>(); 

@@ -6,6 +6,7 @@ import Register from './Components/login/Register';
 import Share from './Components/share/Share';
 import Esqueceu from './Components/login/Esqueceu';
 import Reset from './Components/login/Reset';
+import ErrorPage from './Components/error/ErrorPage';
 import PrivateRoute from './Utils/PrivateRoute';
 import ProfileMain from './Components/profile/ProfileMain';
 import ProfileLinks from './Components/profile/ProfileLinks';
@@ -23,6 +24,7 @@ function AnimatedRoutes() {
         <Route path='/esqueceu' element={<Esqueceu />} />
         <Route path='/resetPassword/:token' element={<Reset />} />
         <Route path='/user/profile/:username' element={<Share />}/>
+        <Route path='*' element={<ErrorPage />}/>
         <Route element={<PrivateRoute />}>
           <Route 
             path='/profile/:id/view' 

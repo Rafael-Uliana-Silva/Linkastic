@@ -54,12 +54,12 @@ const Header = () => {
       <HeaderList>
         {navItems.map(({ to, label, icon }, index) => (
           <li key={index}>
-            <span>{icon}</span>
             <NavLink 
               to={to} 
               className={({ isActive }) => isActive ? "active" : ""}
             >
-              {label}
+            {icon}
+            <span>{label}</span>
             </NavLink>
           </li>
         ))}

@@ -9,6 +9,16 @@ const LoginContainer = styled.div`
     justify-content: center;
     margin: 60px 0;
   }
+
+  /* Celular */
+
+  @media (max-width: 480px) {
+    max-width: 350px;
+    margin: 0 auto 30px auto;
+    .logo {
+      margin: 30px 0;
+    }
+  }
 `
 
 const LoginForm = styled.div`
@@ -56,6 +66,15 @@ const LoginForm = styled.div`
   }
   .criarConta span:hover {
     text-shadow: 0px 0px 10px #2D8633;
+  }
+
+  /* Celular */
+
+  @media (max-width: 480px) {
+    padding: 15px;
+    h2 {
+      margin-bottom: 30px;
+    }
   }
 `
 

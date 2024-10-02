@@ -34,11 +34,33 @@ const HeaderContainer = styled.div`
   background-color: #54A759;
   padding: 15px 30px;
   box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+
+  /* Celular */
+
+  @media (max-width: 480px) {
+    svg {
+      max-width: 25px;
+      margin-right: 0px;
+    }
+    max-width: 100%;
+    position: fixed;
+    margin: 0;
+    padding: 5px 0;
+    bottom: 0;
+    border-radius: 0;
+    justify-content: space-around;
+    z-index: 1000; 
+    margin: 0px;
+  }
 `
 
 const HeaderList = styled.ul`
   display: flex;
   align-items: center;
+  a {
+    display: flex;
+    align-items: center;
+  }
   li {
     color: #fff;
     display: flex;
@@ -52,6 +74,14 @@ const HeaderList = styled.ul`
     background: #2D8633;
     padding: 10px;
     border-radius: 10px;
+  }
+  @media (max-width: 480px) {
+    li .active {
+      border-radius: 100%;
+    }
+    span {
+      display: none;
+    }
   }
 `
 
