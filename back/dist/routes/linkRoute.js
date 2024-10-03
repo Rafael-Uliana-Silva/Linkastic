@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const linkController_1 = require("../controllers/linkController");
+const router = (0, express_1.Router)({ mergeParams: true });
+router.get("/", linkController_1.getAllLinks);
+router.get("/:linkId", linkController_1.getLinkById);
+router.post("/", linkController_1.createLink);
+router.patch("/:linkId", linkController_1.updateLink);
+router.delete("/:linkId", linkController_1.deleteLink);
+exports.default = router;
