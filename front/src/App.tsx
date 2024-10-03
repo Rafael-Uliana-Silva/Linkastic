@@ -1,16 +1,16 @@
 import GlobalStyle from './GlobalStyle';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { UserProvider } from "./Context/UserContext";
-import Login from './Components/login/Login';
-import Register from './Components/login/Register';
-import Share from './Components/share/Share';
-import Esqueceu from './Components/login/Esqueceu';
-import Reset from './Components/login/Reset';
-import ErrorPage from './Components/error/ErrorPage';
-import PrivateRoute from './Utils/PrivateRoute';
-import ProfileMain from './Components/profile/ProfileMain';
-import ProfileLinks from './Components/profile/ProfileLinks';
-import ProfileConfig from './Components/profile/ProfileConfig';
+import { UserProvider } from "./Context/UserContext.tsx";
+import Login from './Components/login/Login.tsx';
+import Register from './Components/login/Register.tsx';
+import Share from './Components/share/Share.tsx';
+import Esqueceu from './Components/login/Esqueceu.tsx';
+import Reset from './Components/login/Reset.tsx';
+import ErrorPage from './Components/error/ErrorPage.tsx';
+import PrivateRoute from './Utils/PrivateRoute.tsx';
+import ProfileMain from './Components/profile/ProfileMain.tsx';
+import ProfileLinks from './Components/profile/ProfileLinks.tsx';
+import ProfileConfig from './Components/profile/ProfileConfig.tsx';
 import { AnimatePresence, motion } from 'framer-motion';
 
 function AnimatedRoutes() {
