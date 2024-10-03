@@ -49,7 +49,7 @@ const ProfileCard = () => {
               </span>
             </li>
           ) : (
-            links.map((link, index) => (
+            links.map((link, index: number) => (
               <Link to={link.link} target='blank' key={link._id}>
                 <li key={index} style={{ backgroundColor: getPlatformColor(link.title) || "#2D8633" }} className="neon" >
                   {getPlatformIcon(link.title)}
