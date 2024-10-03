@@ -1,6 +1,6 @@
 import GlobalStyle from './GlobalStyle';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { UserProvider } from "./Context/UserContext.tsx";
+import { UserProvider } from './Context/UserContext.tsx';
 import Login from './Components/login/Login.tsx';
 import Register from './Components/login/Register.tsx';
 import Share from './Components/share/Share.tsx';
