@@ -32,7 +32,7 @@ const Header = () => {
   const { logoutUser } = context;
 
   const handleCopy = async () => {
-    const urlToCopy = `http://127.0.0.1:5173/user/profile/${data.username}`;
+    const urlToCopy = `https://linkastic.onrender.com/user/profile/${data.username}`;
     try {
       await navigator.clipboard.writeText(urlToCopy);
       setAlertVisible(true);
