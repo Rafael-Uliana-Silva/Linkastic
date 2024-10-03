@@ -34,7 +34,7 @@ const ProfileLinks = () => {
     }
   }, [data]);
 
-  const url = `http://localhost:3005/users/${data?._id}/links`;
+  const url = `https://linkastic.onrender.com/users/${data?._id}/links`;
 
   const addLink = async () => {
     const newLink: Omit<Link, '_id'> = { title: "Novo Link", link: "https://www.exemplo.com" };

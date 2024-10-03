@@ -16,7 +16,7 @@ const Reset = () => {
     setError(null);
 
     try {
-      await axios.post(`http://localhost:3005/resetPassword/${token}`, { newPassword });
+      await axios.post(`https://linkastic.onrender.com/resetPassword/${token}`, { newPassword });
       alert("senha redefinida")
       navigate("/")
     } catch (err: any){

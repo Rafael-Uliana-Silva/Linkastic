@@ -14,7 +14,7 @@ const Register = () => {
     event.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:3005/register', { username, email, password });
+      const response = await axios.post('https://linkastic.onrender.com/register', { username, email, password });
       
       localStorage.setItem('token', response.data.token);
       

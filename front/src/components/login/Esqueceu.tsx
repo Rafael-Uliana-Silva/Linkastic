@@ -16,7 +16,7 @@ const Esqueceu = () => {
     setMessage(null)
 
     try {
-      await axios.post("http://localhost:3005/resetPassword", { email });
+      await axios.post("https://linkastic.onrender.com/resetPassword", { email });
     } catch (err: any){
       setError(err.response?.data?.message || "Erro ao tentar redefinir senha, tente novamente")
     } finally {

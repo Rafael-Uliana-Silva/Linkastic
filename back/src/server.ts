@@ -30,5 +30,5 @@ app.use("/register", registerRoute)
 app.use("/resetPassword", resetRoute)
 
 app.listen(PORT, () => {
-  console.log(`Server iniciado na url: http://localhost:${PORT}`);
+  console.log(`Server iniciado na url: https://linkastic.onrender.com`);
 });

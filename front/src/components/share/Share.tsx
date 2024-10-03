@@ -18,7 +18,7 @@ const ProfileCard = () => {
   React.useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:3005/users/profile/${username}`);
+        const response = await fetch(`https://linkastic.onrender.com/users/profile/${username}`);
         if (!response.ok) {
           throw new Error('Usuário não encontrado');
         }

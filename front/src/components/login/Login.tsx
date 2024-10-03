@@ -17,7 +17,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3005/login", {credential, password});
+      const response = await axios.post("https://linkastic.onrender.com/login", {credential, password});
       const userId = response.data.id
       await setToken(credential, password);
       localStorage.setItem('loggedUserId', userId);

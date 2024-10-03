@@ -52,7 +52,7 @@ const ProfileConfig = () => {
         img: imgSrc, 
       };
 
-      await axios.patch(`http://localhost:3005/users/${data?._id}`, updatedData, {
+      await axios.patch(`https://linkastic.onrender.com/users/${data?._id}`, updatedData, {
         headers: {
           'Content-Type': 'application/json', 
         },

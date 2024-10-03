@@ -28,7 +28,7 @@ const UserContext = React.createContext<UserContextType | undefined>(undefined);
 const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [loggedUserId, setLoggedUserId] = React.useState<string | null>(localStorage.getItem('loggedUserId'));
   const { data, loading, error } = useAxios<UserData>(
-    loggedUserId ? `http://localhost:3005/users/${loggedUserId}` : '',
+    loggedUserId ? `https://linkastic.onrender.com/users/${loggedUserId}` : '',
     'GET',
     {
       headers: {

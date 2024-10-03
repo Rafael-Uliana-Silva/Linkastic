@@ -28,5 +28,5 @@ app.use("/login", loginRoute_1.default);
 app.use("/register", registerRoute_1.default);
 app.use("/resetPassword", resetRoute_1.default);
 app.listen(PORT, () => {
-    console.log(`Server iniciado na url: http://localhost:${PORT}`);
+    console.log(`Server iniciado na url: https://linkastic.onrender.com`);
 });
